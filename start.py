@@ -1,11 +1,10 @@
-﻿import numpy as np
+import numpy as np
 import timeit
 import multiprocessing
 
 from numpy import ndarray
 
 start_time = timeit.default_timer()
-
 
 def should_remove_block(lines, values_to_check, values_to_address):
     check_found = any(value in str(lines) for value in values_to_check)
@@ -18,6 +17,7 @@ def should_remove_block(lines, values_to_check, values_to_address):
         return True
     else:
         return False
+
 
 
 def replace_values(lines, values_to_replace):
