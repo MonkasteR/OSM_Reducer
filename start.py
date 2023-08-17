@@ -8,15 +8,9 @@ start_time = timeit.default_timer()
 
 def should_remove_block(lines, values_to_check, values_to_address):
     check_found = any(value in str(lines) for value in values_to_check)
-    poi_or_polygon_found = False
-    for line in lines:
-        if '[POI]' in line or '[POLYGON]' in line:
-            poi_or_polygon_found = True
-            break
-    if check_found or (poi_or_polygon_found and not all(addr in str(lines) for addr in values_to_address)):
-        return True
-    else:
-        return False
+    poi_or_polygon_found = any('[POI]' in line or '[POLYGON]' in line for line in lines)
+    
+    return check_found or (poi_or_polygon_found and not all(addr in str(lines) for addr in values_to_address))
 
 
 
