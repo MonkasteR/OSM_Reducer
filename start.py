@@ -51,8 +51,8 @@ def process_file(in_file, values_to_check, values_to_replace, values_to_address)
                     content = []
                 else:
                     processed_block = process_block(content, values_to_check, values_to_replace, values_to_address)
-                    if len(processed_block) > 0:
-                        f_out.writelines([temp_block] + processed_block + [line])
+                    if processed_block:
+                        f_out.write(f"{temp_block}{''.join(processed_block)}{line}")
                     content = []
             elif block:
                 content.append(line)
