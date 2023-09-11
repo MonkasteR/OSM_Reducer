@@ -1,0 +1,6 @@
+Phone
+ZipCode
+Addressed
+Floors
+WebPage=
+; shop =
