@@ -3,6 +3,7 @@ import timeit
 from typing import Any, List, Dict
 import numpy as np
 from numpy import ndarray
+import concurrent.futures
 
 start_time: float = timeit.default_timer()
 
@@ -130,6 +131,12 @@ if __name__ == "__main__":
         pool.starmap(
             process_file, [(in_file, values_to_check, values_to_replace, values_to_address) for in_file in in_files]
         )
+
+
+    # with concurrent.futures.ProcessPoolExecutor() as executor:
+    #     futures = [executor.submit(process_file, in_file, values_to_check, values_to_replace, values_to_address) for
+    #                in_file in in_files]
+    #     results = [future.result() for future in concurrent.futures.as_completed(futures)]
 
     end_time: float = timeit.default_timer()
     print("Время выполнения программы: {:.5f} секунд".format(end_time - start_time))
